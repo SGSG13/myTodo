@@ -1,0 +1,15 @@
+.input {
+  width: 100%;
+  height: 50.4px;
+  border: none;
+  outline: none;
+  padding-left: 15px;
+  font-size: 20px;
+
+  &:focus:required:invalid {
+    border-color: transparent;
+  }
+  &:required:valid {
+    border-color: transparent;
+  }
+}

@@ -1,0 +1,12 @@
+export const Constance = {
+    LOAD_ITEMS: 'LOAD_ITEMS',
+    ADD_ITEM: 'ADD_ITEM',
+    DONE_ITEM: 'DONE_ITEM',
+    REMOVE_ITEM: 'REMOVE_ITEM',
+    CHANGE_SEARCH: 'CHANGE_SEARCH',
+    CHANGE_STATUS: 'CHANGE_STATUS',
+
+    REQUEST: '_REQUEST',
+    SUCCESS: '_SUCCESS',
+    FAIL: '_FAIL'
+};

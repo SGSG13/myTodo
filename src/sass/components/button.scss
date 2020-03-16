@@ -1,0 +1,14 @@
+.button {
+  font-size: 16px;
+  background-color: $white;
+  border: none;
+  outline: none;
+  padding: 16px 0;
+  width: 70px;
+
+  &:active,
+  &_active {
+    color: $active;
+  }
+
+}
