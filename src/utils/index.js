@@ -28,14 +28,3 @@ export function searchItems(items, search) {
         return item.title.toLowerCase().indexOf(search.toLowerCase()) > -1;
     });
 }
-
-export function normalizedData(items) {
-    if (!items || items.length < 1) return [];
-    return items.map(item => {
-        item['id'] = item['_id'];
-        delete item['_id'];
-        delete item['__v'];
-
-        return item;
-    })
-}

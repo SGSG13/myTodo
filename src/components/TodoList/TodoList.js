@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
 import {useSelector} from 'react-redux'
 import {useDispatch} from 'react-redux'
-import {filterSelector} from '../selectors'
-import {doneItemAction, removeItemAction, getItemsAction} from '../redux/ac'
+import {filterSelector} from '../../selectors/index'
+import {doneItemAction, removeItemAction, getItemsAction} from '../../redux/ac'
 import TodoListItem from './TodoListItem'
-import Loader from './Loader'
+import Loader from '../Loader'
 
 
 function TodoList() {

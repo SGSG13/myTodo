@@ -1,46 +1,45 @@
 const {Router} = require('express');
-const TodoItem = require('../models/todoItem');
+const Todo = require('../models/todo');
 const router = Router();
 
 const reply  = (res, body, status = 200) => res.status(status).json(body);
 
-router.get('/get', async (req, res) => {
+router.get('/todos', async (req, res) => {
     try {
-        const items = await TodoItem.getItems();
+        const items = await Todo.getTodos();
         reply(res, {items}, 200);
     } catch (e) {
-        reply(res, {error: e}, 404);
+        reply(res, {error: e}, 500);
     }
 });
 
-router.post('/add', async (req, res) => {
-    const body = req.body;
+router.post('/todo', async (req, res) => {
+    const title = req.body.title;
     try {
-        await TodoItem.addItem(body.title);
-        const items = await TodoItem.getItems();
-        reply(res, {items}, 200);
+        await Todo.addTodo(title);
+        reply(res, {result: 'ok'});
     } catch (e) {
-        reply(res, {error: e}, 404);
+        reply(res, {error: e}, 500);
     }
 });
 
-router.post('/done', async (req, res) => {
-    const id = req.body.id;
+router.put('/todo/:id', async (req, res) => {
+    const id = req.params.id;
     try {
-        await TodoItem.doneItems(id);
-        reply(res, {result: 'ok'}, 200);
+        await Todo.completeTodo(id);
+        reply(res, {result: 'ok'});
     } catch (e) {
-        reply(res, {error: e}, 404);
+        reply(res, {error: e}, 500);
     }
 });
 
-router.post('/remove', async (req, res) => {
-    const id = req.body.id;
+router.delete('/todo/:id', async (req, res) => {
+    const id = req.params.id;
     try {
-        await TodoItem.deleteItems(id);
-        reply(res, {result: 'ok'}, 200);
+        await Todo.deleteTodo(id);
+        reply(res, {result: 'ok'});
     } catch (e) {
-        reply(res, {error: e}, 404);
+        reply(res, {error: e}, 500);
     }
 });
 

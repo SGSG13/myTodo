@@ -7,16 +7,14 @@ import {
     removeItemFromApi
 } from '../api'
 import {socket} from '../api/socket'
-import {normalizedData} from '../utils'
 import {Constance} from './constance'
 
 export const getItemsSaga = function* () {
     try {
         const res = yield call(getItemsFromApi);
-        const normalizedItems = yield call(normalizedData, res.data.items);
         yield put({
             type: Constance.LOAD_ITEMS + Constance.SUCCESS,
-            payload: {items: normalizedItems}
+            payload: {items: res.data.items}
         })
     } catch (error) {
         yield put({
@@ -28,7 +26,6 @@ export const getItemsSaga = function* () {
 
 export const addItemSaga = function* (action) {
     try {
-
         yield call(addItemFromApi, action.payload.title);
 
     } catch (error) {
@@ -59,7 +56,7 @@ export const removeItemSaga = function* (action) {
 
 const createTodoSocket = () => eventChannel(emmit => {
     const callback = data => emmit(data);
-    socket.on('change-todo', callback);
+    socket.on('changeTodo', callback);
     return () => socket.removeListener('change-todo', callback)
 });
 
@@ -68,10 +65,9 @@ export const realtimeSyncSaga = function * () {
     try {
         while (true) {
             const {items} = yield take(chan);
-            const normalizedItems = yield call(normalizedData, items);
             yield put({
                 type: Constance.LOAD_ITEMS + Constance.SUCCESS,
-                payload: {items: normalizedItems}
+                payload: { items }
             })
         }
     } finally {
