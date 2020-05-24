@@ -18,8 +18,8 @@ export const getItemsSaga = function* () {
         })
     } catch (error) {
         yield put({
-            type: Constance.LOAD_ITEMS + Constance.FAIL,
-            error
+            type: Constance.RESPONSE_FAIL,
+            error: error.message
         })
     }
 };
@@ -27,11 +27,10 @@ export const getItemsSaga = function* () {
 export const addItemSaga = function* (action) {
     try {
         yield call(addItemFromApi, action.payload.title);
-
     } catch (error) {
         yield put({
-            type: Constance.LOAD_ITEMS + Constance.FAIL,
-            error
+            type: Constance.RESPONSE_FAIL,
+            error: error.message
         })
     }
 };
@@ -41,7 +40,10 @@ export const doneItemSaga = function* (action) {
     try {
         yield call(doneItemFromApi, id);
     } catch (error) {
-        console.log(error)
+        yield put({
+            type: Constance.RESPONSE_FAIL,
+            error: error.message
+        })
     }
 };
 
@@ -50,7 +52,10 @@ export const removeItemSaga = function* (action) {
     try {
         yield call(removeItemFromApi, id);
     } catch (error) {
-        console.log(error)
+        yield put({
+            type: Constance.RESPONSE_FAIL,
+            error: error.message
+        })
     }
 };
 

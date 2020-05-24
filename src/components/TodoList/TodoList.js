@@ -18,27 +18,29 @@ function TodoList() {
         dispatch(getItemsAction())
     }, [dispatch]);
 
-    if (error) return <div>Error : {error}</div>;
     if (isLoading) return <Loader/>;
+    const errorMessage = error && <div>Error: {error}</div>;
     const isEmpty = items.length === 0 && !isLoading;
-    const empty = <div className="text-center">List is empty :(</div>;
-
+    const emptyMessage = isEmpty && <div className="text-center">List is empty :(</div>;
     return (
-        <div className={`todo-list ${isEmpty ? 'todo-list_empty' : ''}`}>
-            {isEmpty && empty}
-            <ul>
-                {
-                    items.map(item => (
-                        <TodoListItem
-                            key={item.id}
-                            doneItem={doneItemDispatch}
-                            removeItem={removeItemDispatch}
-                            {...item}
-                        />
-                    ))
-                }
-            </ul>
-        </div>
+        <>
+        {errorMessage}
+            <div className={`todo-list ${isEmpty ? 'todo-list_empty' : ''}`}>
+                {emptyMessage}
+                <ul>
+                    {
+                        items.map(item => (
+                            <TodoListItem
+                                key={item.id}
+                                doneItem={doneItemDispatch}
+                                removeItem={removeItemDispatch}
+                                {...item}
+                            />
+                        ))
+                    }
+                </ul>
+            </div>
+        </>
     );
 }
 

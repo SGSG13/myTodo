@@ -2,7 +2,9 @@ import React from 'react';
 
 function TodoListItem(props) {
     const {id, title, done, doneItem, removeItem} = props;
-    const handleDone = id => () => doneItem(id);
+    const handleDone = id => () => {
+        if(!done) doneItem(id);
+    };
     const handleRemove = id => () => removeItem(id);
     return (
         <li className="todo-list__item">

@@ -8,5 +8,5 @@ export const Constance = {
 
     REQUEST: '_REQUEST',
     SUCCESS: '_SUCCESS',
-    FAIL: '_FAIL'
+    RESPONSE_FAIL: 'RESPONSE_FAIL'
 };
