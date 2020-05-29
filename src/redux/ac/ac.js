@@ -1,4 +1,4 @@
-import {Constance} from './constance'
+import {Constance} from '../constance'
 
 export function getItemsAction() {
     return {

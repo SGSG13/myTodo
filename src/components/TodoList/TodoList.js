@@ -2,8 +2,8 @@ import React, {useEffect} from 'react';
 import {useSelector} from 'react-redux'
 import {useDispatch} from 'react-redux'
 import {filterSelector} from '../../selectors/index'
-import {doneItemAction, removeItemAction, getItemsAction} from '../../redux/ac'
-import TodoListItem from './TodoListItem'
+import {doneItemAction, removeItemAction, getItemsAction} from '../../redux/ac/ac'
+import TodoListItem from './TodoListItem/TodoListItem'
 import Loader from '../Loader'
 
 
@@ -14,14 +14,17 @@ function TodoList() {
     const dispatch = useDispatch();
     const doneItemDispatch = id => dispatch(doneItemAction(id));
     const removeItemDispatch = id => dispatch(removeItemAction(id));
+    const getItemsDispatch = () => dispatch(getItemsAction());
+
     useEffect(() => {
-        dispatch(getItemsAction())
-    }, [dispatch]);
+        getItemsDispatch()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     if (isLoading) return <Loader/>;
-    const errorMessage = error && <div>Error: {error}</div>;
+    const errorMessage = error && <div className="error">Error: {error}</div>;
     const isEmpty = items.length === 0 && !isLoading;
-    const emptyMessage = isEmpty && <div className="text-center">List is empty :(</div>;
+    const emptyMessage = isEmpty && <div className="empty text-center">List is empty :(</div>;
     return (
         <>
         {errorMessage}

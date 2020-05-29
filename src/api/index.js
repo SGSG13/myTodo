@@ -12,7 +12,8 @@ export const removeItemFromApi = id => resolveResponse(axios.delete(URL.TODO + `
 
 const resolveResponse = async (request) => {
     try {
-      return await request
+        const {data} = await request;
+      return data
     } catch (error) {
        throw new Error(error.response.data.error.message)
     }

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {addItemAction} from '../redux/ac'
+import {addItemAction} from '../../redux/ac/ac'
 import {useDispatch} from 'react-redux'
 
 function AddItemForm() {

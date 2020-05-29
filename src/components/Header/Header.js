@@ -12,11 +12,9 @@ function Header() {
             <div className="header__title">
                 <h1>ToDo List</h1>
             </div>
-            <div>
-                <span>
-                    {toDoCount} more to do, {doneCount} done
-                </span>
-            </div>
+            <p>
+                <span>{toDoCount}</span> more to do, <span>{doneCount}</span> done
+            </p>
         </div>
     );
 }

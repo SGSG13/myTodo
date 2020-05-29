@@ -5,7 +5,6 @@ const itemsSelector = state => state.items;
 const searchTitleSelector = state => state.filter.searchTitle;
 const statusSelector = state => state.filter.statusFilter;
 
-
 export const filterSelector = createSelector(
     itemsSelector,
     searchTitleSelector,

@@ -1,6 +1,6 @@
-import {Constance} from "./constance"
+import {Constance} from "../constance"
 
-const initialStore = {
+export const initialStore = {
     items: [],
     loading: false,
     error: null,

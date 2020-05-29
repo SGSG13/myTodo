@@ -5,16 +5,16 @@ import {
     addItemFromApi,
     doneItemFromApi,
     removeItemFromApi
-} from '../api'
-import {socket} from '../api/socket'
-import {Constance} from './constance'
+} from '../../api/index'
+import {socket} from '../../api/socket'
+import {Constance} from '../constance'
 
 export const getItemsSaga = function* () {
     try {
-        const res = yield call(getItemsFromApi);
+        const { items } = yield call(getItemsFromApi);
         yield put({
             type: Constance.LOAD_ITEMS + Constance.SUCCESS,
-            payload: {items: res.data.items}
+            payload: { items }
         })
     } catch (error) {
         yield put({

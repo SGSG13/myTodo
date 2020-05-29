@@ -1,6 +1,6 @@
 import React from 'react';
-import Search from './Search'
-import StatusFilter from './StatusFilter'
+import Search from './Search/Search'
+import StatusFilter from './StatusFilter/StatusFilter'
 
 function FilterContainer() {
     return (
