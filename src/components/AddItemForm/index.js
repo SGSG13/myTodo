@@ -7,14 +7,15 @@ function AddItemForm() {
 
     const handleChangeTitle = ev => setTitle(ev.target.value);
     const dispatch = useDispatch();
-    const handleAddItem = () => {
+    const handleSubmit = (ev) => {
+        ev.preventDefault();
         if (title.length < 1) return;
         dispatch(addItemAction(title));
         setTitle('')
     };
 
     return (
-        <div className="add-form">
+        <form className="add-form" onSubmit={handleSubmit}>
             <div className="flex-fill">
                 <input
                     type="text"
@@ -25,12 +26,9 @@ function AddItemForm() {
                 />
             </div>
             <div className="flex-fit">
-                <button
-                    className="button"
-                    onClick={handleAddItem}
-                >Add</button>
+                <button className="button">Add</button>
             </div>
-        </div>
+        </form>
     );
 }
 
