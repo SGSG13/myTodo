@@ -4,6 +4,7 @@ import {useDispatch} from 'react-redux'
 
 function AddItemForm() {
     const [title, setTitle] = useState('');
+
     const handleChangeTitle = ev => setTitle(ev.target.value);
     const dispatch = useDispatch();
     const handleAddItem = () => {
@@ -27,9 +28,7 @@ function AddItemForm() {
                 <button
                     className="button"
                     onClick={handleAddItem}
-                >
-                    Add
-                </button>
+                >Add</button>
             </div>
         </div>
     );

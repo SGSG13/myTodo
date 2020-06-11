@@ -1,9 +1,10 @@
 import React from 'react';
 import {useSelector} from 'react-redux'
+import {itemsSelector} from '../../redux/selectors'
 
 
 function Header() {
-    const items = useSelector(state => state.items);
+    const items = useSelector(itemsSelector);
     const doneCount = items.filter((item) => item.done).length;
     const toDoCount = items.length - doneCount;
 

@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
+import React, {useEffect} from 'react'
 import {useSelector} from 'react-redux'
 import {useDispatch} from 'react-redux'
-import {filterSelector} from '../../selectors/index'
+import {filterSelector, loadingSelector, errorSelector} from '../../redux/selectors'
 import {doneItemAction, removeItemAction, getItemsAction} from '../../redux/ac'
 import TodoListItem from '../TodoListItem'
 import Loader from '../Loader'
@@ -9,8 +9,8 @@ import Loader from '../Loader'
 
 function TodoList() {
     const items = useSelector(state => filterSelector(state));
-    const isLoading = useSelector(state => state.loading);
-    const error = useSelector(state => state.error);
+    const isLoading = useSelector(loadingSelector);
+    const error = useSelector(errorSelector);
     const dispatch = useDispatch();
     const doneItemDispatch = id => dispatch(doneItemAction(id));
     const removeItemDispatch = id => dispatch(removeItemAction(id));

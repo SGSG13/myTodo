@@ -1,6 +1,7 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {changeStatusAction} from '../../../redux/ac'
+import {statusSelector} from '../../../redux/selectors'
 
 const buttons = [
     {label: 'All', name: 'all'},
@@ -9,7 +10,7 @@ const buttons = [
 ];
 
 function StatusFilter() {
-    const statusFilter = useSelector(state => state.filter.statusFilter);
+    const statusFilter = useSelector(statusSelector);
     const dispatch = useDispatch();
     const handleChangeStatus = name => () => dispatch(changeStatusAction(name));
     return (

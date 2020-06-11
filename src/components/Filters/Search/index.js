@@ -1,9 +1,10 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {changeSearchAction} from '../../../redux/ac'
+import {searchTitleSelector} from '../../../redux/selectors'
 
 function Search() {
-    const searchTitle = useSelector(state => state.filter.searchTitle);
+    const searchTitle = useSelector(searchTitleSelector);
     const dispatch = useDispatch();
     const handleChangeSearch = ev => dispatch(changeSearchAction(ev.target.value));
     return (
