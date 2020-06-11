@@ -1,6 +1,6 @@
 import React from 'react'
 import {mount} from 'enzyme'
-import TodoListItem from './TodoListItem'
+import TodoListItem from './index'
 
 describe('<TodoListItem/>', () => {
 

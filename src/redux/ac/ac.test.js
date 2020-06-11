@@ -1,4 +1,4 @@
-import * as Actions from './ac';
+import * as Actions from './index';
 import {Constance} from "../constance";
 
 describe('actions', () => {

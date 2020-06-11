@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {changeStatusAction} from '../../../redux/ac/ac'
+import {changeStatusAction} from '../../../redux/ac'
 
 const buttons = [
     {label: 'All', name: 'all'},

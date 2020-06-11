@@ -2,8 +2,8 @@ import React from 'react'
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import {mount} from 'enzyme'
-import {changeStatusAction} from '../../../redux/ac/ac'
-import StatusFilter from './StatusFilter'
+import {changeStatusAction} from '../../../redux/ac'
+import StatusFilter from './index'
 
 describe('<StatusFilter/>', () => {
     const mockStore = configureStore([]);

@@ -2,8 +2,8 @@ import React from 'react'
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import {mount} from 'enzyme'
-import {addItemAction} from '../../redux/ac/ac'
-import AddItemForm from './AddItemForm'
+import {addItemAction} from '../../redux/ac'
+import AddItemForm from './index'
 
 describe('<AddItemForm/>', () => {
     const mockStore = configureStore([]);

@@ -1,4 +1,4 @@
-import reducer, {initialStore} from './reducer';
+import reducer, {initialStore} from './index';
 import {Constance} from "../constance";
 
 describe('reducer', () => {

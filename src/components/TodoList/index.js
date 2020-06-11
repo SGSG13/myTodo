@@ -2,8 +2,8 @@ import React, {useEffect} from 'react';
 import {useSelector} from 'react-redux'
 import {useDispatch} from 'react-redux'
 import {filterSelector} from '../../selectors/index'
-import {doneItemAction, removeItemAction, getItemsAction} from '../../redux/ac/ac'
-import TodoListItem from './TodoListItem/TodoListItem'
+import {doneItemAction, removeItemAction, getItemsAction} from '../../redux/ac'
+import TodoListItem from '../TodoListItem'
 import Loader from '../Loader'
 
 
@@ -14,12 +14,10 @@ function TodoList() {
     const dispatch = useDispatch();
     const doneItemDispatch = id => dispatch(doneItemAction(id));
     const removeItemDispatch = id => dispatch(removeItemAction(id));
-    const getItemsDispatch = () => dispatch(getItemsAction());
 
     useEffect(() => {
-        getItemsDispatch()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+        dispatch(getItemsAction())
+    }, [dispatch]);
 
     if (isLoading) return <Loader/>;
     const errorMessage = error && <div className="error">Error: {error}</div>;

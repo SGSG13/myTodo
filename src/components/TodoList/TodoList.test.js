@@ -2,9 +2,9 @@ import React from 'react'
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import {mount} from 'enzyme'
-import {getItemsAction} from '../../redux/ac/ac'
-import TodoList from './TodoList'
-import TodoListItem from './TodoListItem/TodoListItem'
+import {getItemsAction} from '../../redux/ac'
+import TodoList from './index'
+import TodoListItem from '../TodoListItem/index'
 import Loader from '../Loader'
 
 describe('<TodoList/>', () => {

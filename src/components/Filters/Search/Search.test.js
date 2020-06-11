@@ -2,8 +2,8 @@ import React from 'react'
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import {mount} from 'enzyme'
-import {changeSearchAction} from '../../../redux/ac/ac'
-import Search from './Search'
+import {changeSearchAction} from '../../../redux/ac'
+import Search from './index'
 
 describe('<Search/>', () => {
     const mockStore = configureStore([]);

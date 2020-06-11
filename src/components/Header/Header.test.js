@@ -2,7 +2,7 @@ import React from 'react'
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import {mount} from 'enzyme'
-import Header from './Header'
+import Header from './index'
 
 describe('<Header/>', () => {
     const mockStore = configureStore([]);

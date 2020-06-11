@@ -6,7 +6,7 @@ import {
     doneItemSaga,
     removeItemSaga,
     addItemSaga
-} from './saga'
+} from './index'
 import {
     getItemsFromApi,
     addItemFromApi,
