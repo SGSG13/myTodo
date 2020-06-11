@@ -8,7 +8,7 @@ export function getItemsAction() {
 
 export function addItemAction(title) {
     return {
-        type: Constance.ADD_ITEM,
+        type: Constance.ADD_ITEM + Constance.REQUEST,
         payload: {title}
     }
 }

@@ -62,21 +62,21 @@ export const removeItemSaga = function* (action) {
 const createTodoSocket = () => eventChannel(emmit => {
     const callback = data => emmit(data);
     socket.on('changeTodo', callback);
-    return () => socket.removeListener('change-todo', callback)
+    return () => socket.removeListener('changeTodo', callback)
 });
 
 export const realtimeSyncSaga = function * () {
-    const chan = yield call(createTodoSocket);
+    const channel = yield call(createTodoSocket);
     try {
         while (true) {
-            const {items} = yield take(chan);
+            const {items} = yield take(channel);
             yield put({
                 type: Constance.LOAD_ITEMS + Constance.SUCCESS,
                 payload: { items }
             })
         }
     } finally {
-        yield call([chan, chan.close]);
+        yield call([channel, channel.close]);
     }
 };
 
@@ -86,6 +86,6 @@ export default function* rootSaga() {
         takeEvery(Constance.LOAD_ITEMS + Constance.REQUEST, getItemsSaga),
         takeEvery(Constance.DONE_ITEM + Constance.REQUEST, doneItemSaga),
         takeEvery(Constance.REMOVE_ITEM + Constance.REQUEST, removeItemSaga),
-        takeEvery(Constance.ADD_ITEM, addItemSaga)
+        takeEvery(Constance.ADD_ITEM + Constance.REQUEST, addItemSaga)
     ])
 }
