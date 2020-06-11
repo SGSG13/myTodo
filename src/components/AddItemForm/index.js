@@ -4,7 +4,6 @@ import {useDispatch} from 'react-redux'
 
 function AddItemForm() {
     const [title, setTitle] = useState('');
-
     const handleChangeTitle = ev => setTitle(ev.target.value);
     const dispatch = useDispatch();
     const handleSubmit = (ev) => {

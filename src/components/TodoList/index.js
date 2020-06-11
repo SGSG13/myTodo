@@ -23,10 +23,11 @@ function TodoList() {
     const errorMessage = error && <div className="error">Error: {error}</div>;
     const isEmpty = items.length === 0 && !isLoading;
     const emptyMessage = isEmpty && <div className="empty text-center">List is empty :(</div>;
+    const classNameForList = `todo-list ${isEmpty ? 'todo-list_empty' : ''}`;
     return (
-        <>
+        <div>
         {errorMessage}
-            <div className={`todo-list ${isEmpty ? 'todo-list_empty' : ''}`}>
+            <div className={classNameForList}>
                 {emptyMessage}
                 <ul>
                     {
@@ -41,7 +42,7 @@ function TodoList() {
                     }
                 </ul>
             </div>
-        </>
+        </div>
     );
 }
 
