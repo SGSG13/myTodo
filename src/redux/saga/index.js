@@ -1,17 +1,12 @@
-import {all, call, put, takeEvery, spawn, take} from 'redux-saga/effects';
+import {all, call, put, takeEvery, spawn, take} from 'redux-saga/effects'
 import {eventChannel} from 'redux-saga'
-import {
-    getItemsFromApi,
-    addItemFromApi,
-    doneItemFromApi,
-    removeItemFromApi
-} from '../../api/index'
-import {socket} from '../../api/socket'
 import {Constance} from '../constance'
+import {errorMessage} from '../../utils'
+import api from '../../apiService'
 
 export const getItemsSaga = function* () {
     try {
-        const { items } = yield call(getItemsFromApi);
+        const { items } = yield call(api.getItemsFromApi);
         yield put({
             type: Constance.LOAD_ITEMS + Constance.SUCCESS,
             payload: { items }
@@ -19,18 +14,18 @@ export const getItemsSaga = function* () {
     } catch (error) {
         yield put({
             type: Constance.RESPONSE_FAIL,
-            error: error.message
+            error: errorMessage(error)
         })
     }
 };
 
 export const addItemSaga = function* (action) {
     try {
-        yield call(addItemFromApi, action.payload.title);
+        yield call(api.addItemFromApi, action.payload.title);
     } catch (error) {
         yield put({
             type: Constance.RESPONSE_FAIL,
-            error: error.message
+            error: errorMessage(error)
         })
     }
 };
@@ -38,11 +33,11 @@ export const addItemSaga = function* (action) {
 export const doneItemSaga = function* (action) {
     const id = action.payload.id;
     try {
-        yield call(doneItemFromApi, id);
+        yield call(api.doneItemFromApi, id);
     } catch (error) {
         yield put({
             type: Constance.RESPONSE_FAIL,
-            error: error.message
+            error: errorMessage(error)
         })
     }
 };
@@ -50,16 +45,17 @@ export const doneItemSaga = function* (action) {
 export const removeItemSaga = function* (action) {
     const id = action.payload.id;
     try {
-        yield call(removeItemFromApi, id);
+        yield call(api.removeItemFromApi, id);
     } catch (error) {
         yield put({
             type: Constance.RESPONSE_FAIL,
-            error: error.message
+            error: errorMessage(error)
         })
     }
 };
 
 const createTodoSocket = () => eventChannel(emmit => {
+    const socket = api.socketConnection();
     const callback = data => emmit(data);
     socket.on('changeTodo', callback);
     return () => socket.removeListener('changeTodo', callback)

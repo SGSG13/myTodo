@@ -28,3 +28,7 @@ export function searchItems(items, search) {
         return item.title.toLowerCase().indexOf(search.toLowerCase()) > -1;
     });
 }
+
+export function errorMessage(error) {
+    return error.message || 'Something went wrong'
+}

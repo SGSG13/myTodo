@@ -12,7 +12,7 @@ import {
     addItemFromApi,
     doneItemFromApi,
     removeItemFromApi
-} from '../../api/index'
+} from '../../apiService'
 import {Constance} from "../constance";
 
 
