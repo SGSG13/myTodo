@@ -71,7 +71,7 @@ export const realtimeSyncSaga = function * () {
         while (true) {
             const {items} = yield take(channel);
             yield put({
-                type: Constance.LOAD_ITEMS + Constance.SUCCESS,
+                type: Constance.SYNC_ITEMS,
                 payload: { items }
             })
         }
