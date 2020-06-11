@@ -13,7 +13,7 @@ describe('actions', () => {
     it('addItemAction(): should create an action to add item', () => {
         const title = 'test';
         const expectedAction = {
-            type: Constance.ADD_ITEM,
+            type: Constance.ADD_ITEM + Constance.REQUEST,
             payload: { title }
         };
         expect(Actions.addItemAction(title)).toEqual(expectedAction)

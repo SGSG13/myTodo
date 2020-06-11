@@ -29,7 +29,7 @@ describe('<TodoListItem/>', () => {
     });
 
     it('should not call doneItem when item is done', () => {
-        container.find('.todo-list__title').simulate('click');
+        container.find('[data-id="item-title"]').simulate('click');
         expect(mockDoneItem).toHaveBeenCalledTimes(0)
     });
 
@@ -38,12 +38,12 @@ describe('<TodoListItem/>', () => {
             ...mockProps,
             done: false
         });
-        container.find('.todo-list__title').simulate('click');
+        container.find('[data-id="item-title"]').simulate('click');
         expect(mockDoneItem).toHaveBeenCalledTimes(1)
     });
 
     it('should call removeItem', () => {
-        container.find('.button').simulate('click');
+        container.find('[data-id="remove-item-button"]').simulate('click');
         expect(mockRemoveItem).toHaveBeenCalledTimes(1)
     });
 

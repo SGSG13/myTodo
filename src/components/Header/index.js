@@ -14,7 +14,7 @@ function Header() {
                 <h1>ToDo List</h1>
             </div>
             <p>
-                <span>{toDoCount}</span> more to do, <span>{doneCount}</span> done
+                <span data-id="todo-count">{toDoCount}</span> more to do, <span data-id="done-count">{doneCount}</span> done
             </p>
         </div>
     );

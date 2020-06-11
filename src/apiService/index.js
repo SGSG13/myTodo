@@ -8,20 +8,20 @@ class Api {
         SOCKET: 'http://localhost:3001'
     };
 
-    getItemsFromApi = () => this.resolveResponse(axios.get(this.url.GET_TODOS));
+    getItems = () => this.resolveResponse(axios.get(this.url.GET_TODOS));
 
-    addItemFromApi = title => this.resolveResponse(axios.post(this.url.TODO, { title }));
+    addItem = title => this.resolveResponse(axios.post(this.url.TODO, { title }));
 
-    doneItemFromApi = id => this.resolveResponse(axios.put(this.TODO + id));
+    doneItem = id => setTimeout(() => this.resolveResponse(axios.put(this.url.TODO + id)), 3000);
 
-    removeItemFromApi = id => this.resolveResponse(axios.delete(this.url.TODO + id));
+    removeItem = id => this.resolveResponse(axios.delete(this.url.TODO + id));
 
     resolveResponse = async (request) => {
         try {
             const {data} = await request;
             return data
         } catch (error) {
-            throw new Error(error.response.data.error.message)
+            throw new Error(error.response.data.error ? error.response.data.error.message : 'Something went wrong')
         }
     };
 

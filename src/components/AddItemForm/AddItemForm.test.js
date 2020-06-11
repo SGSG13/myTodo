@@ -21,30 +21,30 @@ describe('<AddItemForm/>', () => {
 
     it('should change input', () => {
         const value = 'test';
-        container.find('.input').simulate('change', {
+        container.find('[data-id="add-form-input"]').simulate('change', {
             target: { value }
         });
-        expect(container.find('.input').prop('value')).toEqual(value)
+        expect(container.find('[data-id="add-form-input"]').prop('value')).toEqual(value)
     });
 
     it('should call action addItem', () => {
         const value = 'test';
         store.dispatch = jest.fn();
-        container.find('.input').simulate('change', {
+        container.find('[data-id="add-form-input"]').simulate('change', {
             target: { value }
         });
-        container.find('.button').simulate('click');
+        container.find('[data-id="add-form"]').simulate('submit');
         expect(store.dispatch).toHaveBeenCalledWith(addItemAction(value))
     });
 
     it('should reset input after added item', () => {
-        container.find('.input').simulate('change', {
+        container.find('[data-id="add-form-input"]').simulate('change', {
             target: {
                 value: 'test'
             }
         });
-        container.find('.button').simulate('click');
-        expect(container.find('.input').prop('value')).toEqual('')
+        container.find('[data-id="add-form"]').simulate('submit');
+        expect(container.find('[data-id="add-form-input"]').prop('value')).toEqual('')
     });
 
 });

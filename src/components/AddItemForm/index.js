@@ -14,7 +14,11 @@ function AddItemForm() {
     };
 
     return (
-        <form className="add-form" onSubmit={handleSubmit}>
+        <form
+            className="add-form"
+            onSubmit={handleSubmit}
+            data-id="add-form"
+        >
             <div className="flex-fill">
                 <input
                     type="text"
@@ -22,6 +26,7 @@ function AddItemForm() {
                     className="input"
                     value={title}
                     onChange={handleChangeTitle}
+                    data-id="add-form-input"
                 />
             </div>
             <div className="flex-fit">

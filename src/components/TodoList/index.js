@@ -20,9 +20,9 @@ function TodoList() {
     }, [dispatch]);
 
     if (isLoading) return <Loader/>;
-    const errorMessage = error && <div className="error">Error: {error}</div>;
+    const errorMessage = error && <div data-id="error-message">Error: {error}</div>;
     const isEmpty = items.length === 0 && !isLoading;
-    const emptyMessage = isEmpty && <div className="empty text-center">List is empty :(</div>;
+    const emptyMessage = isEmpty && <div className="text-center" data-id="empty-message">List is empty :(</div>;
     const classNameForList = `todo-list ${isEmpty ? 'todo-list_empty' : ''}`;
     return (
         <div>

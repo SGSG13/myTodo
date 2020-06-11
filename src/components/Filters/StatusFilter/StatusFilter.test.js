@@ -25,7 +25,7 @@ describe('<StatusFilter/>', () => {
     });
 
     it('should render 3 buttons', () => {
-        expect(container.find('.button')).toHaveLength(3)
+        expect(container.find('[data-id="status-button"]')).toHaveLength(3)
     });
 
     it('should render initial all button', () => {
@@ -33,7 +33,7 @@ describe('<StatusFilter/>', () => {
     });
 
     it('should call action changeStatus', () => {
-        container.find('.button').last().simulate('click');
+        container.find('[data-id="status-button"]').last().simulate('click');
         expect(store.dispatch).toHaveBeenCalledWith(changeStatusAction('active'))
     });
 

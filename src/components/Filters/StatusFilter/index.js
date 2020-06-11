@@ -22,6 +22,7 @@ function StatusFilter() {
                             className={`button ${statusFilter === button.name ? 'button_active' : ''}`}
                             onClick={handleChangeStatus(button.name)}
                             key={button.name}
+                            data-id="status-button"
                         >
                             {button.label}
                         </button>

@@ -25,20 +25,20 @@ describe('<Search/>', () => {
     });
 
     it('should render initial input value', () => {
-        expect(container.find('.input').prop('value')).toEqual('test')
+        expect(container.find('[data-id="search-input"]').prop('value')).toEqual('test')
     });
 
     it('should change input', () => {
         const value = 'test';
-        container.find('.input').simulate('change', {
+        container.find('[data-id="search-input"]').simulate('change', {
             target: { value }
         });
-        expect(container.find('.input').prop('value')).toEqual(value)
+        expect(container.find('[data-id="search-input"]').prop('value')).toEqual(value)
     });
 
     it('should call action changeSearch', () => {
         const value = 'test';
-        container.find('.input').simulate('change', {
+        container.find('[data-id="search-input"]').simulate('change', {
             target: { value }
         });
         expect(store.dispatch).toHaveBeenCalledWith(changeSearchAction(value))

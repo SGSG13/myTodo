@@ -16,6 +16,7 @@ function Search() {
                 placeholder="Search"
                 value={searchTitle}
                 onChange={handleChangeSearch}
+                data-id="search-input"
             />
         </div>
     );

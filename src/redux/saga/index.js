@@ -1,12 +1,11 @@
 import {all, call, put, takeEvery, spawn, take} from 'redux-saga/effects'
 import {eventChannel} from 'redux-saga'
 import {Constance} from '../constance'
-import {errorMessage} from '../../utils'
 import api from '../../apiService'
 
 export const getItemsSaga = function* () {
     try {
-        const { items } = yield call(api.getItemsFromApi);
+        const { items } = yield call(api.getItems);
         yield put({
             type: Constance.LOAD_ITEMS + Constance.SUCCESS,
             payload: { items }
@@ -14,18 +13,18 @@ export const getItemsSaga = function* () {
     } catch (error) {
         yield put({
             type: Constance.RESPONSE_FAIL,
-            error: errorMessage(error)
+            error: error.message
         })
     }
 };
 
 export const addItemSaga = function* (action) {
     try {
-        yield call(api.addItemFromApi, action.payload.title);
+        yield call(api.addItem, action.payload.title);
     } catch (error) {
         yield put({
             type: Constance.RESPONSE_FAIL,
-            error: errorMessage(error)
+            error: error.message
         })
     }
 };
@@ -33,11 +32,11 @@ export const addItemSaga = function* (action) {
 export const doneItemSaga = function* (action) {
     const id = action.payload.id;
     try {
-        yield call(api.doneItemFromApi, id);
+        yield call(api.doneItem, id);
     } catch (error) {
         yield put({
             type: Constance.RESPONSE_FAIL,
-            error: errorMessage(error)
+            error: error.message
         })
     }
 };
@@ -45,11 +44,11 @@ export const doneItemSaga = function* (action) {
 export const removeItemSaga = function* (action) {
     const id = action.payload.id;
     try {
-        yield call(api.removeItemFromApi, id);
+        yield call(api.removeItem, id);
     } catch (error) {
         yield put({
             type: Constance.RESPONSE_FAIL,
-            error: errorMessage(error)
+            error: error.message
         })
     }
 };
@@ -80,7 +79,7 @@ export default function* rootSaga() {
     yield spawn(realtimeSyncSaga);
     yield all([
         takeEvery(Constance.LOAD_ITEMS + Constance.REQUEST, getItemsSaga),
-        takeEvery(Constance.DONE_ITEM + Constance.REQUEST, doneItemSaga),
+        take(Constance.DONE_ITEM + Constance.REQUEST, doneItemSaga),
         takeEvery(Constance.REMOVE_ITEM + Constance.REQUEST, removeItemSaga),
         takeEvery(Constance.ADD_ITEM + Constance.REQUEST, addItemSaga)
     ])

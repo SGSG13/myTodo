@@ -7,12 +7,7 @@ import {
     removeItemSaga,
     addItemSaga
 } from './index'
-import {
-    getItemsFromApi,
-    addItemFromApi,
-    doneItemFromApi,
-    removeItemFromApi
-} from '../../apiService'
+import api from '../../apiService'
 import {Constance} from "../constance";
 
 
@@ -25,7 +20,7 @@ describe('saga', () => {
 
         return expectSaga(getItemsSaga)
             .provide([
-                [call(getItemsFromApi), mockData]
+                [call(api.getItems), mockData]
             ])
             .put({
                 type: Constance.LOAD_ITEMS + Constance.SUCCESS,
@@ -42,7 +37,7 @@ describe('saga', () => {
 
         return expectSaga(getItemsSaga)
             .provide([
-                [call(getItemsFromApi), throwError(error)]
+                [call(api.getItems), throwError(error)]
             ])
             .put({
                 type: Constance.RESPONSE_FAIL,
@@ -66,7 +61,7 @@ describe('saga', () => {
 
         return expectSaga(addItemSaga, action)
             .provide([
-                [call(addItemFromApi, title), mockData]
+                [call(api.addItem, title), mockData]
             ])
             .dispatch(action)
             .run()
@@ -82,7 +77,7 @@ describe('saga', () => {
 
         return expectSaga(addItemSaga, action)
             .provide([
-                [call(addItemFromApi, title), throwError(error)]
+                [call(api.addItem, title), throwError(error)]
             ])
             .put({
                 type: Constance.RESPONSE_FAIL,
@@ -104,7 +99,7 @@ describe('saga', () => {
 
         return expectSaga(doneItemSaga, action)
             .provide([
-                [call(doneItemFromApi, id), mockData]
+                [call(api.doneItem, id), mockData]
             ])
             .dispatch(action)
             .silentRun()
@@ -120,7 +115,7 @@ describe('saga', () => {
 
         return expectSaga(doneItemSaga, action)
             .provide([
-                [call(doneItemFromApi, id), throwError(error)]
+                [call(api.doneItem, id), throwError(error)]
             ])
             .put({
                 type: Constance.RESPONSE_FAIL,
@@ -142,7 +137,7 @@ describe('saga', () => {
 
         return expectSaga(removeItemSaga, action)
             .provide([
-                [call(removeItemFromApi, id), mockData]
+                [call(api.removeItem, id), mockData]
             ])
             .dispatch(action)
             .silentRun()
@@ -158,7 +153,7 @@ describe('saga', () => {
 
         return expectSaga(removeItemSaga, action)
             .provide([
-                [call(removeItemFromApi, id), throwError(error)]
+                [call(api.removeItem, id), throwError(error)]
             ])
             .put({
                 type: Constance.RESPONSE_FAIL,

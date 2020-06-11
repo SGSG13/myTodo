@@ -36,10 +36,10 @@ describe('<Header/>', () => {
     });
 
     it('render todo counter', () => {
-        expect(container.find('span').first().text()).toEqual('2')
+        expect(container.find('[data-id="todo-count"]').text()).toEqual('2')
     });
 
     it('render done counter', () => {
-        expect(container.find('span').last().text()).toEqual('1')
+        expect(container.find('[data-id="done-count"]').text()).toEqual('1')
     });
 });

@@ -33,18 +33,18 @@ describe('<TodoList/>', () => {
 
     it('should render loader', () => {
         const container = getMountedContainer({ loading: true });
-        expect(container.find('Loader')).toHaveLength(1)
+        expect(container.find('Loader').exists()).toBe(true)
     });
 
     it('should render error message', () => {
         const error = 'test';
         const container = getMountedContainer({ error });
-        expect(container.find('.error').text()).toEqual(`Error: ${error}`)
+        expect(container.find('[data-id="error-message"]').text()).toEqual(`Error: ${error}`)
     });
 
     it('should render empty list message', () => {
         const container = getMountedContainer({});
-        expect(container.find('.empty').text()).toEqual('List is empty :(')
+        expect(container.find('[data-id="empty-message"]').text()).toEqual('List is empty :(')
     });
 
     it('should render all items', () => {

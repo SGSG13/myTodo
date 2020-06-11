@@ -29,6 +29,3 @@ export function searchItems(items, search) {
     });
 }
 
-export function errorMessage(error) {
-    return error.message || 'Something went wrong'
-}
