@@ -1,5 +1,5 @@
 import { createSelector } from "reselect";
-import { searchItems, filterItems } from '../../utils/index'
+import { searchItems, filterItems } from '../../utils'
 
 export const itemsSelector = state => state.items;
 export const searchTitleSelector = state => state.filter.searchTitle;

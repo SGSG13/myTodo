@@ -79,7 +79,7 @@ export default function* rootSaga() {
     yield spawn(realtimeSyncSaga);
     yield all([
         takeEvery(Constance.LOAD_ITEMS + Constance.REQUEST, getItemsSaga),
-        take(Constance.DONE_ITEM + Constance.REQUEST, doneItemSaga),
+        takeEvery(Constance.DONE_ITEM + Constance.REQUEST, doneItemSaga),
         takeEvery(Constance.REMOVE_ITEM + Constance.REQUEST, removeItemSaga),
         takeEvery(Constance.ADD_ITEM + Constance.REQUEST, addItemSaga)
     ])

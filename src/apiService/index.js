@@ -12,7 +12,7 @@ class Api {
 
     addItem = title => this.resolveResponse(axios.post(this.url.TODO, { title }));
 
-    doneItem = id => setTimeout(() => this.resolveResponse(axios.put(this.url.TODO + id)), 3000);
+    doneItem = id =>  this.resolveResponse(axios.put(this.url.TODO + id));
 
     removeItem = id => this.resolveResponse(axios.delete(this.url.TODO + id));
 
